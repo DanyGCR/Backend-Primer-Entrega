@@ -17,7 +17,6 @@ addProduct = (title, description, price, thumbnail, code, stock,) => {
         thumbnail,
         code,
         stock,
-        products: []
     }
 
 if (this.products.length === 0 ) {
@@ -31,7 +30,7 @@ this.products.push(product)
 }
 
 getProductsById = (idProduct) => {
-    const productIndex = this.products.findIndex(product => product.id === idProduct);
+    const productIndex = this.products.find(product => product.id === idProduct);
 
     if (productIndex === -1) {
         console.log("Not Found");
