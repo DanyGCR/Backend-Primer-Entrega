@@ -9,43 +9,70 @@ getProducts = () => {
 }
 
 
-addProduct = (title, description, price, thumbnail, code, stock,) => {
-    const product = {
-        title,
-        description,
-        price,
-        thumbnail,
-        code,
-        stock,
+addProduct(product) {
+
+    if (
+
+      product.title,
+
+      product.description ,
+
+      product.price, 
+
+      product.thumbnail,
+
+      product.stock, 
+
+      product.code
+
+    ) {
+
+      console.log(
+
+        "Informacion erronea, revisar propiedades"
+
+        );
+
+        return
+
     }
 
-if (this.products.length === 0 ) {
-    product.id = 1
-} else {
-    product.id = this.products [this.products.length-1 ].id + 1
-}
 
-this.products.push(product)
 
-}
+    if (this.products.find(item => item.code === product.code)) {
 
-getProductsById = (idProduct) => {
-    const productIndex = this.products.find(product => product.id === idProduct);
+        console.log("Este producto ya existe en el carrito")
 
-    if (productIndex === -1) {
-        console.log("Not Found");
-        return;
+        return
+
     }
 
-    const productAdd = this.products [productIndex].products.includes(idProduct);
 
-    if (productAdd){
-        console.log("Se agrego correctamente el Producto");
-        return;
+    const productToAdd = {
+
+        ...product, id: this.products.length +1
+
     }
-    this.products[productIndex].product.push(idProduct)
+
+    this.products.push(productToAdd);
+
 }
-};
+
+getProducts() {
+
+    return this.products
+
+}
+
+getProductById(id) {
+
+    const search = this.products.find((item) => item.id === id)
+
+    return search ? search : console.log("Product not found");
+
+     }
+
+}
 
 const manejadorProductos = new ProductManager ();
 manejadorProductos.addProduct ('Regla', 'Transparente', 100, 'sin imagen', 'abc123', 50);
