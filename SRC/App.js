@@ -13,6 +13,27 @@ import Checkout from './components/Checkout/Checkout'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 
+import { Express } from 'express';
+import { Server } from 'socket.io';
+import handlebars from 'express-handkebars';
+import __dirname from '.utils.js';
+
+const app = express ();
+
+app.use(express.json());
+
+app.use(express.urlencoded ({extended: true}));
+
+app.use(express.static((`${__dirname}/public`)))
+
+app.engine('handlebars', handlebars.engine());
+
+app.set('views', `${__dirname}/views`);
+
+app.set('view engine', 'handlebars'); 
+
+const server=app.listen(8080, ()=> console.log("listening 8080"))
+
 function App() {
   return (    
     <div className = "App">

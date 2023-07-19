@@ -20,7 +20,7 @@ const NavBar = () => {
                     Muñecos
                 </NavLink>
                
-                <CartWidget className={styles.CartWidget} />
+                <CartWidget className={styles.CartWidget} />  
 
             </div>
         </nav>
